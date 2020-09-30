@@ -1,7 +1,7 @@
 language: node_js
 env:
   global:
-    - CC_TEST_REPORTER_ID=574209c4867da31240165f5b2e522d3c5c6ba697fd1a77bf31d578ab3675ac02
+    - CC_TEST_REPORTER_ID="574209c4867da31240165f5b2e522d3c5c6ba697fd1a77bf31d578ab3675ac02"
 matrix:
   include:
   - node_js: '12'
@@ -17,4 +17,4 @@ before_script:
 script:
   - npm run test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESUL
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
