@@ -1,5 +1,7 @@
 # OTOT Task B
 
+[![Build Status](https://travis-ci.org/Na-Nazhou/CS3219-OTOT-TaskB.svg?branch=master)](https://travis-ci.org/Na-Nazhou/CS3219-OTOT-TaskB)
+
 [![Build status](https://ci.appveyor.com/api/projects/status/02s3cpga95h0ckcl?svg=true)](https://ci.appveyor.com/project/Na-Nazhou/cs3219-otot-taskb)
 
 [![Coverage Status](https://coveralls.io/repos/github/Na-Nazhou/CS3219-OTOT-TaskB/badge.svg?branch=master)](https://coveralls.io/github/Na-Nazhou/CS3219-OTOT-TaskB?branch=master)
