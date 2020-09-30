@@ -1,15 +1,15 @@
 // var createError = require('http-errors');
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-var indexRouter = require('./routes/index');
+import indexRouter from './routes/index';
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/v1', indexRouter);
@@ -30,4 +30,4 @@ app.use('/v1', indexRouter);
 //   res.render('error');
 // });
 
-module.exports = app;
+export default app;
