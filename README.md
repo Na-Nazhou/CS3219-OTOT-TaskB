@@ -10,4 +10,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2b95cdcdc8d45e8928ee/maintainability)](https://codeclimate.com/github/Na-Nazhou/CS3219-OTOT-TaskB/maintainability)
 
-## Reference: https://www.smashingmagazine.com/2020/04/express-api-backend-project-postgresql/
+## References: 
+
+- https://www.smashingmagazine.com/2020/04/express-api-backend-project-postgresql/
+- https://medium.com/@victorsteven/restful-api-with-nodejs-express-postgresql-sequelize-travis-mocha-coveralls-and-code-climate-f28715f7a014

@@ -1,8 +1,12 @@
 import express from 'express';
-import { indexPage } from '../controllers';
+import QuoteController from '../controllers/QuoteController';
 
-const indexRouter = express.Router();
+const router = express.Router();
 
-indexRouter.get('/', indexPage);
+router.get('/', QuoteController.getAllQuotes);
+router.post('/', QuoteController.addQuote);
+router.get('/:id', QuoteController.getAQuote);
+router.put('/:id', QuoteController.updatedQuote);
+router.delete('/:id', QuoteController.deleteQuote);
 
-export default indexRouter;
+export default router;

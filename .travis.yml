@@ -2,6 +2,7 @@ language: node_js
 env:
   global:
     - CC_TEST_REPORTER_ID="574209c4867da31240165f5b2e522d3c5c6ba697fd1a77bf31d578ab3675ac02"
+    - NODE_ENV=test
 matrix:
   include:
   - node_js: '12'
@@ -11,10 +12,26 @@ install:
   npm install
 after_success: npm run coverage
 before_script:
+  - psql -c 'create database quote_test;' -U postgres
+  - psql -c "CREATE USER postgres WITH PASSWORD null;" -U postgres
+  - npm run build
+  - npm install -g sequelize-cli
+  - sequelize db:migrate
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - npm run test
+  - npm test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  services:
+    - postgresql
+  addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+  before_install:
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo /etc/init.d/postgresql restart

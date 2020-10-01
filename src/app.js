@@ -1,18 +1,17 @@
 // var createError = require('http-errors');
 import express from 'express';
-import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import logger from 'morgan';
 
-import indexRouter from './routes/index';
+import router from './routes/index';
 
 const app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/v1', indexRouter);
+app.use('/v1', router);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
