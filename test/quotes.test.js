@@ -1,6 +1,6 @@
 import { expect, server, BASE_URL } from './setup';
 
-describe('Testing the qupte endpoints:', () => {
+describe('Testing the quote endpoints:', () => {
   it('should create a quote', (done) => {
     const quote = {
       content: 'A quote',
