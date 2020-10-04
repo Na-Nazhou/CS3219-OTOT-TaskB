@@ -24,3 +24,8 @@ script:
   - npm test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+deploy:
+  provider: lambda
+  function_name: "app"
+  runtime: "nodejs12.x"
+  handler_name: "build/app.handler"
