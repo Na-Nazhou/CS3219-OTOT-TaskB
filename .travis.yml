@@ -1,9 +1,10 @@
+dist: xenial
 language: node_js
+os: linux
 env:
   global:
     - CC_TEST_REPORTER_ID="574209c4867da31240165f5b2e522d3c5c6ba697fd1a77bf31d578ab3675ac02"
-    - NODE_ENV=test
-matrix:
+jobs:
   include:
   - node_js: '12'
 cache:
@@ -11,21 +12,25 @@ cache:
 services:
   - postgresql
 install:
-  npm install
-after_success: npm run coverage
+  - npm install
 before_script:
   - psql -c 'create database quotes_test;' -U postgres
-  - npm install -g sequelize-cli
   - sequelize db:migrate
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
   - npm test
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_success: npm run coverage
+before_deploy:
+  - npm install -g serverless
+  - export NODE_ENV=production && npm run prestart
 deploy:
-  provider: lambda
-  function_name: "app"
-  runtime: "nodejs12.x"
-  handler_name: "build/app.handler"
+  provider: script
+  script: 
+    - sls deploy
+  skip_cleanup: true
+  on:
+    branch: master
+after_script:
+    - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

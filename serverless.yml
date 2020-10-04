@@ -1,3 +1,4 @@
+app: cs3219-otot-taskb-app
 service: cs3219-otot-taskb
 
 frameworkVersion: '2'
@@ -6,6 +7,9 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: production
+  environment:
+    NODE_ENV: production
+    DATABASE_URL: ${env:DATABASE_URL}
 
 functions:
   app:
