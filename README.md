@@ -7,11 +7,11 @@
 
 # Setting up dev environment
 
-- Create a `.env` file at the root of the directory and copy the content of `.env.example` to that file. You may modify the database user and password accordingly. 
+- Create a `.env` file at the root of the directory and copy the content of `.env.example` to `.env`.. You may modify the database user and password accordingly. 
 - Run `npm i` to install the dependencies. 
-- Run `brew services start postgresql` to make sure PostgresQL is running. If you are not on macOS, you may use other commands to start PostgresQL.
+- Run `brew services start postgresql` to make sure PostgreSQL is running. If you are not on macOS, you may run other commands to start PostgreSQL.
 - Run `createdb quotes_development` to create the database for development.
-- Run `createdb quotes_test` to create the database for test. 
+- Run `createdb quotes_test` to create the database for testing. 
 - Run `sequelize db:migrate` to run database migration. 
 - Run `npm run dev` to start the server. 
 
