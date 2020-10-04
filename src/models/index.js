@@ -15,21 +15,6 @@ const db = {};
 let sequelize;
 if (config.environment === 'production') {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-  sequelize = new Sequelize(
-    process.env.PROD_DB_NAME,
-    process.env.PROD_DB_USER,
-    process.env.PROD_DB_PASS,
-    {
-      host: process.env.PROD_DB_HOST,
-      port: process.env.PROD_DB_PORT,
-      dialect: 'postgres',
-      dialectOption: {
-        ssl: true,
-        native: true,
-      },
-      logging: true,
-    }
-  );
 } else {
   sequelize = new Sequelize(
     config.database,
@@ -60,5 +45,6 @@ Object.keys(db).forEach((modelName) => {
 });
 
 db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 export default db;
