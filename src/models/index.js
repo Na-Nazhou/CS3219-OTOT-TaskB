@@ -13,8 +13,13 @@ console.log('this is the environment: ', env);
 const db = {};
 
 let sequelize;
-if (config.environment === 'production') {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (env === 'production') {
+  sequelize = new Sequelize(process.env[config.use_env_variable], {
+    ...config,
+    pool: {
+      max: 1,
+    },
+  });
 } else {
   sequelize = new Sequelize(
     config.database,

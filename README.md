@@ -18,7 +18,11 @@
 - Run `sequelize db:migrate` to run migration. 
 - Run `npm run dev` to start the server. 
 
+# Manual Deployment
+- Run `export NODE_ENV=production` and `sls deploy`
+
 ## References: 
 
 - https://www.smashingmagazine.com/2020/04/express-api-backend-project-postgresql/
 - https://medium.com/@victorsteven/restful-api-with-nodejs-express-postgresql-sequelize-travis-mocha-coveralls-and-code-climate-f28715f7a014
+- https://mattwelke.com/2019/01/06/free-tier-managed-sql-with-aws-lambda-and-heroku-postgres.html
