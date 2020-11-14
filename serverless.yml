@@ -16,7 +16,6 @@ functions:
     handler: build/app.handler
     events:
       - http: ANY /
-      - http: 'ANY {proxy+}'
 
 plugins:
   - serverless-offline
